@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-daytona-black: #08080a;
+  --color-daytona-red: #ef4444;
+  --color-daytona-red-dark: #b91c1c;
+}
+
+@layer base {
+  body {
+    @apply bg-daytona-black text-white font-sans antialiased selection:bg-daytona-red selection:text-white;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glass-red {
+    background-color: rgba(239, 68, 68, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  .neon-shadow {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+  }
+
+  .neon-shadow-strong {
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
+  }
+
+  .btn-primary {
+    @apply bg-daytona-red hover:bg-daytona-red-dark text-white px-6 py-2 rounded-md font-bold italic transition-all duration-300 transform hover:scale-105 active:scale-95;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+  }
+
+  .btn-secondary {
+    @apply text-white px-6 py-2 rounded-md font-bold italic transition-all duration-300 transform hover:scale-105 active:scale-95;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Custom Cursor */
+  * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z'/%3E%3Cpath d='m13 13 6 6'/%3E%3C/svg%3E"), auto !important;
+  }
+
+  button, a, input, select, textarea {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z'/%3E%3Cpath d='m13 13 6 6'/%3E%3C/svg%3E"), pointer !important;
+  }
+
+  .nav-blur {
+    background: rgba(8, 8, 10, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .tape {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: absolute;
+    z-index: 10;
+  }
+
+  .tape-top {
+    width: 100px;
+    height: 30px;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  .tape-corner {
+    width: 60px;
+    height: 25px;
+    top: -10px;
+    right: -20px;
+    transform: rotate(45deg);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(239, 68, 68, 0.3);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(239, 68, 68, 0.5);
+  }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(239, 68, 68, 0.05), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
