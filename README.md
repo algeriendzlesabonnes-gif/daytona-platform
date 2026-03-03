@@ -1,20 +1,47 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# LAPD MDT — Daytona RP
 
-# Run and deploy your AI Studio app
+MDT policier full-stack avec design sombre LAPD, gestion des citoyens/casiers/rapports/preuves/enquêtes et panel admin recrutement.
 
-This contains everything you need to run your app locally.
+## Stack
+- Frontend: React + Vite + Tailwind classes
+- Backend: Node.js + Express + MongoDB (Mongoose) + Multer + JWT
+- Auth: login matricule + base Discord OAuth URL endpoint
 
-View your app in AI Studio: https://ai.studio/apps/a7527707-a874-4830-8d59-8ea1a3da84ff
+## Lancer localement
 
-## Run Locally
+### 1) Backend
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+### 2) Frontend
+```bash
+npm install
+npm run dev
+```
 
+Le frontend attend l'API sur `http://localhost:4000` (modifiable via `VITE_API_BASE`).
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Docker Compose
+```bash
+cp .env.example .env
+docker compose up --build
+```
+
+## Routes API incluses
+- `GET /api/me`
+- `GET /api/citizens`
+- `POST /api/citizens`
+- `POST /api/casiers`
+- `GET /api/reports`
+- `POST /api/reports`
+- `POST /api/evidence/upload`
+- `GET /api/enquetes`
+- `POST /api/admin/create-officer`
+
+## Compte bootstrap
+Au premier lancement, un officier admin est créé :
+- Matricule: `LAPD-001`
+- Mot de passe: `changeme123`
